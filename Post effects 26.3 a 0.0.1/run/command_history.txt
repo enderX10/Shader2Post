@@ -1,0 +1,50 @@
+/posteffect add Player190 testfx:radial
+/posteffect clear Player190
+/shadertoy convert
+/posteffect add Player190 testfx:radial
+/posteffect clear
+/posteffect clear Player190
+/time set minecraft:day
+/shadertoy convert
+/posteffect add Player941 testfx:shapes
+/posteffect clear
+/posteffect clear Player941
+/posteffect add Player941 testfx:misty
+/posteffect clear Player941
+/shadertoy convert
+/posteffect add Player941 testfx:star
+/shadertoy convert
+/posteffect add Player411 shader:shapes
+/posteffect clear Player411
+/posteffect add Player411 shader:star
+/posteffect clear Player411
+/posteffect add Player411 shader:radial
+/posteffect clear Player411
+/posteffect add Player411 shader:meteor
+/posteffect clear Player411
+/shadertoy convert
+/posteffect add Player480 shader:ocean
+/posteffect add Player480 shader:shapes
+/posteffect add Player480 minecraft:invert
+/posteffect add Player480 minecraft:blur
+/posteffect clear Player480
+/shadertoy convert
+/posteffect add Player480 shader:ocean
+/posteffect clear
+/posteffect clear Player480
+/posteffect add Player480 shader:star
+/posteffect clear Player480
+/posteffect add Player480 shader:misty
+/posteffect clear Player480
+/posteffect add Player480 shader:shapes
+/posteffect clear Player480
+/posteffect add Player480 shader:meteor
+/posteffect clear Player480
+/shadertoy convert
+/shadertoy on misty
+/posteffect add Player894 shader:misty
+/posteffect clear
+/posteffect clear Player894
+/shadertoy convert
+/posteffect add Player254 shader:shapes
+/posteffect clear Player254

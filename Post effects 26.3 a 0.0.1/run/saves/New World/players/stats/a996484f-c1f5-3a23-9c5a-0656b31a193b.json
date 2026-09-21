@@ -1,0 +1,20 @@
+{
+  "stats": {
+    "minecraft:custom": {
+      "minecraft:sprint_one_cm": 1863,
+      "minecraft:time_since_rest": 1027,
+      "minecraft:walk_one_cm": 1947,
+      "minecraft:total_world_time": 1761,
+      "minecraft:fly_one_cm": 12216,
+      "minecraft:crouch_one_cm": 4,
+      "minecraft:sneak_time": 6,
+      "minecraft:play_time": 1027,
+      "minecraft:jump": 19,
+      "minecraft:time_since_death": 1027
+    },
+    "minecraft:used": {
+      "minecraft:pink_petals": 41
+    }
+  },
+  "DataVersion": 5023
+}
