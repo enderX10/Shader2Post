@@ -24,7 +24,7 @@ Lets you convert shaders to Minecraft post effects easily
 
 7.Enable the converted resource pack in the settings
 
-8.Then you can turn on your posteffect using `/posteffect add @p <name of your posteffect> ` **Kepp in mind that some shaders might be copyrighted and you cannot distribute them**
+8.Then you can turn on your posteffect using `/posteffect add @p <name of your posteffect> ` **Kepp in mind that some shaders might be copyrighted and you cannot distribute the resource pack**
 
 **This project is still in alpha version so there might be a lot of graphical ,lighting or loading bugs if you find any please report them in the issues page.**
 
