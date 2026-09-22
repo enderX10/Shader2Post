@@ -22,7 +22,7 @@ Lets you convert shaders to Minecraft post effects easily
 6.When you added all the shaders you want ,you can run a command
    `/shadertoy convert` the converter should run without any issues (if you have any report it in the issues tab)
 
-7.Enable the resource pack in the settings
+7.Enable the converted resource pack in the settings
 
 8.Then you can turn on your posteffect using `/posteffect add @p <name of your posteffect> ` **Kepp in mind that some shaders might be copyrighted and you cannot distribute them**
 
