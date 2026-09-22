@@ -7,7 +7,7 @@ Lets you convert shaders to Minecraft post effects easily
 
 ## Setup
 
-Install my-project with npm
+
 
 1.Launch Minecraft with the mod installed.
 
