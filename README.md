@@ -20,7 +20,7 @@ Lets you convert shaders to Minecraft post effects easily
 5.Create a file named **image.glsl** and a file named **buffer_a.glsl** if your shader has a buffer (Currently this project doesn't support multiple buffers like buffer_b,buffer_c)
 
 6.When you added all the shaders you want ,you can run a command
-   `/shadertoy convert` the converter should run without any issues (if you have any report it in the issues tab)
+   `/shadertoy convert` the converter should run without any issues (if you have any report it in the issues tab, if you need **example resource it can be found here** https://github.com/enderX10/Shader2Post/releases/tag/example-pack)
 
 7.Enable the converted resource pack in the settings
 
