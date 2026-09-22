@@ -24,7 +24,7 @@ public class Post_effectsClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // konwersja przy starcie gry (pack musi istniec zanim wlaczysz go w menu zasobow)
+        // conversion on game startup (the pack must exist before you enable it in the resource packs menu)
         List<String> log = new ArrayList<>();
         try {
             ShadertoyConverter.run(packsDir(), log);

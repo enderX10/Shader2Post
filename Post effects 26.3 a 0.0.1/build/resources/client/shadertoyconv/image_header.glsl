@@ -1,7 +1,7 @@
 #version 330
 #include <minecraft:globals.glsl>
 
-uniform sampler2D InSampler; // wynik pass'a Buffer A (iChannel0 = Buffer A)
+uniform sampler2D InSampler; // score pass Buffer A (iChannel0 = Buffer A)
 
 layout(std140) uniform SamplerInfo {
     vec2 OutSize;
@@ -18,5 +18,5 @@ layout(location = 0) out vec4 _fragOut;
 #define iMouse vec4(0.0)
 #define iChannel0 InSampler
 
-// ================= ORYGINALNY KOD SHADERTOY (bez zmian) =================
+
 #line 1

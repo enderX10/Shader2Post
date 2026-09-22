@@ -1,6 +1,6 @@
 
 
-// ================= KONIEC ORYGINALNEGO KODU =================
+// ================= END OF ORIGINAL CODE =================
 void main() {
     vec2 fc = gl_FragCoord.xy;
     // ukryj wiersz z zapakowanym stanem (16 + 1 pikseli w lewym dolnym rogu)

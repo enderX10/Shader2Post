@@ -11,19 +11,19 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * Czysta Java (bez klas Minecrafta). Czyta lokalne pliki Shadertoy i generuje resource pack.
+ * Pure Java (no Minecraft classes). Reads local Shadertoy files and generates a resource pack.
  *
- * Wejscie:  resourcepacks/shadertoy_input/<nazwa>/buffer_a.glsl   (wymagany)
- *                                                /image.glsl      (opcjonalny)
- *                                                /settings.properties (opcjonalny: time_scale=10.0)
- *           resourcepacks/shadertoy_input/pack.mcmeta               (opcjonalny - nadpisuje domyslny)
- * Wyjscie:  resourcepacks/shadertoy_generated/...
+ * Input:   resourcepacks/shadertoy_input/<name>/buffer_a.glsl   (required)
+ *                                               /image.glsl      (optional)
+ *                                               /settings.properties (optional: time_scale=10.0)
+ *          resourcepacks/shadertoy_input/pack.mcmeta               (optional - overrides default)
+ * Output:  resourcepacks/shadertoy_generated/...
  *
- * Kod uzytkownika NIE jest przepisywany - dostaje tylko naglowek i stopke.
+ * User code is NOT rewritten - it only receives a header and footer.
  */
 public final class ShadertoyConverter {
 
-    public static final String NAMESPACE = "shader";;
+    public static final String NAMESPACE = "shader";
     public static final String INPUT_DIR = "shadertoy_input";
     public static final String OUTPUT_DIR = "shadertoy_generated";
     public static final float DEFAULT_TIME_SCALE = 1.0f;
@@ -47,8 +47,8 @@ public final class ShadertoyConverter {
         }
     }
 
-    /** Usuwa #version z kodu uzytkownika (naglowek ma wlasny) i normalizuje konce linii. */
-    /** Usuwa #version, normalizuje konce linii i naprawia "#define NAZWA.28" (glslang wymaga spacji). */
+    /** Removes #version from user code (header has its own) and normalizes line endings. */
+    /** Removes #version, normalizes line endings, and fixes "#define NAME.28" (glslang requires a space). */
     static String clean(String src) {
         String s = src.replace("\r\n", "\n").replace('\r', '\n').replace("\uFEFF", "");
         s = s.replaceAll("(?m)^[ \\t]*#version.*$", "");
@@ -57,8 +57,8 @@ public final class ShadertoyConverter {
     }
 
     private static String join(String header, String src, String footer) {
-        // stripTrailing + "\n": kod uzytkownika zawsze zaczyna sie w nowej linii,
-        // a jego pierwsza linia ma numer 1 (dzieki "#line 1" na koncu naglowka)
+        // stripTrailing + "\n": user code always starts on a new line,
+        // and its first line is numbered 1 (thanks to "#line 1" at the end of the header)
         return header.stripTrailing() + "\n" + clean(src) + footer;
     }
 
@@ -154,7 +154,7 @@ public final class ShadertoyConverter {
         return folderName.toLowerCase().replaceAll("[^a-z0-9_]", "_");
     }
 
-    /** @return lista nazw wygenerowanych efektow; komunikaty w {@code log}. */
+    /** @return list of generated effect names; messages are stored in {@code log}. */
     public static List<String> run(Path resourcePacksDir, List<String> log) throws IOException {
         List<String> generated = new ArrayList<>();
         Path in = resourcePacksDir.resolve(INPUT_DIR);
@@ -212,7 +212,7 @@ public final class ShadertoyConverter {
             p.load(is);
             return Float.parseFloat(p.getProperty("time_scale", Float.toString(DEFAULT_TIME_SCALE)).trim());
         } catch (IOException | NumberFormatException e) {
-            log.add("Zly settings.properties w " + file.getParent().getFileName() + ": " + e.getMessage());
+            log.add("Invalid settings.properties in " + file.getParent().getFileName() + ": " + e.getMessage());
             return DEFAULT_TIME_SCALE;
         }
     }

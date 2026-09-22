@@ -6,9 +6,9 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 /**
- * Wlaczanie/wylaczanie post effectu przez GameRenderer.
- * Uzywa refleksji, bo sygnatury (Identifier vs ResourceLocation, nazwy metod) zmienialy sie miedzy wersjami;
- * w 26.x kod jest nieobfuskowany, wiec nazwy sa stabilne. Jesli nazwa sie zmieni, dostaniesz czytelny blad w logu.
+ * Enables/disables post-effects via GameRenderer.
+ * Uses reflection because signatures (Identifier vs ResourceLocation, method names) changed between versions;
+ * in 26.x the code is unobfuscated, so names are stable. If the name changes, you will get a clear error in the log.
  */
 public final class PostEffectController {
 
@@ -20,7 +20,7 @@ public final class PostEffectController {
         for (Method m : renderer.getClass().getMethods()) {
             if (m.getName().equals("setPostEffect") && m.getParameterCount() == 1) { setter = m; break; }
         }
-        if (setter == null) throw new NoSuchMethodException("GameRenderer#setPostEffect(...) nie znaleziono - dopasuj nazwe do 26.3");
+        if (setter == null) throw new NoSuchMethodException("GameRenderer#setPostEffect(...) not found - match the name to 26.3");
         setter.invoke(renderer, makeId(setter.getParameterTypes()[0], namespace, path));
     }
 

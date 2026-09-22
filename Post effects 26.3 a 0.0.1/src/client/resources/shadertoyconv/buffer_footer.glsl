@@ -1,6 +1,6 @@
 
 
-// ================= KONIEC ORYGINALNEGO KODU =================
+// ================= END OF ORIGINAL CODE =================
 #undef texelFetch
 
 void main() {

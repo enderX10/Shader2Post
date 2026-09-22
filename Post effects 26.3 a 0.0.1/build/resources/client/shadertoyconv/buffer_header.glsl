@@ -1,8 +1,8 @@
 #version 330
 #include <minecraft:globals.glsl>
 
-uniform sampler2D InSampler;   // render gry - nieuzywany
-uniform sampler2D PrevSampler; // poprzednia klatka tego samego shadera (iChannel0 = Buffer A)
+uniform sampler2D InSampler;   // game render - unused
+uniform sampler2D PrevSampler; // previous frame of the same shader (iChannel0 = Buffer A)
 
 layout(std140) uniform SamplerInfo {
     vec2 OutSize;
@@ -26,10 +26,10 @@ int _iFrame = 0;
 #define iDate vec4(2026.0, 0.0, 1.0, 0.0)
 #define iChannel0 PrevSampler
 
-// ---- Stan (macierz kamery, licznik klatek) w celu RGBA8 ----
-// Target post effect jest 8-bitowy, wiec kazdy float zapisujemy jako 4 bajty (jeden piksel).
-// Logiczny piksel k (0..3) zajmuje fizyczne piksele 4k..4k+3 w wierszu y=0.
-// Licznik klatek jest w fizycznym pikselu x=16.
+// ---- State (camera matrix, frame counter) in RGBA8 target ----
+// The post effect target is 8-bit, so we store each float as 4 bytes (one pixel).
+// Logical pixel k (0..3) occupies physical pixels 4k..4k+3 in row y=0.
+// The frame counter is at physical pixel x=16.
 const int _STATE_LOGICAL = 4;
 const int _COUNTER_X = 16;
 
@@ -44,7 +44,7 @@ float _unpack(vec4 c) {
     return uintBitsToFloat(b.x | (b.y << 8) | (b.z << 16) | (b.w << 24));
 }
 
-// Odczyt logicznych pikseli stanu; reszta idzie do prawdziwego texelFetch.
+// Reading logical state pixels; the rest goes to actual texelFetch.
 vec4 _stateFetch(sampler2D s, ivec2 p, int lod) {
     if (p.y == 0 && p.x >= 0 && p.x < _STATE_LOGICAL) {
         return vec4(_unpack(texelFetch(s, ivec2(4 * p.x + 0, 0), lod)),
@@ -56,5 +56,5 @@ vec4 _stateFetch(sampler2D s, ivec2 p, int lod) {
 }
 #define texelFetch _stateFetch
 
-// ================= ORYGINALNY KOD SHADERTOY (bez zmian) =================
+
 #line 1
